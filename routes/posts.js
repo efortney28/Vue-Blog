@@ -30,7 +30,7 @@ module.exports = server => {
 
     // Add Post
     server.post('/api/posts/new', async (req, res, next) => {
-        if (!res.is('application/json')) {
+        if (!req.is('application/json')) {
             return next(new errors.InvalidContentError("Expects 'application/json"));
         }
         const { title, body, published_date, author } = req.body;
@@ -39,7 +39,7 @@ module.exports = server => {
         
         try {
             const newPost = await post.save();
-            res,send(201);
+            res.send(201);
             next();
         } catch (err) {
             return next(new errors.InternalError(err.message));
@@ -48,7 +48,7 @@ module.exports = server => {
 
     // Edit Post
     server.put('/api/posts/:id', async (req, res, next) => {
-        if (!res.is('application/json')) {
+        if (!req.is('application/json')) {
             return next(new errors.InvalidContentError("Expects 'application/json"));
         }
 
