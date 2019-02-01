@@ -1,0 +1,20 @@
+{
+  "name": "vue-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.8",
+    "restify": "^7.7.0",
+    "restify-errors": "^6.1.1",
+    "restify-jwt-community": "^1.0.9"
+  }
+}
