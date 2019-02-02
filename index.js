@@ -8,6 +8,7 @@ const server = restify.createServer();
 // Middleware
 server.use(restify.plugins.bodyParser());
 
+// Start the server listening on PORT
 server.listen(config.PORT, () => {
     mongoose.set('useFindAndModify', false);
     mongoose.connect(
@@ -16,6 +17,7 @@ server.listen(config.PORT, () => {
     );
 });
 
+// Connect to the MongoDB db
 const db = mongoose.connection;
 
 db.on('error', err => console.log(err));

@@ -29,7 +29,9 @@ module.exports = server => {
     });
 
     // Add Post
-    server.post('/api/posts/new', async (req, res, next) => {
+    server.post('/api/posts/new',
+    rjwt({ secret: config.JWT_SECRET }),
+     async (req, res, next) => {
         if (!req.is('application/json')) {
             return next(new errors.InvalidContentError("Expects 'application/json"));
         }
@@ -47,7 +49,9 @@ module.exports = server => {
     });
 
     // Edit Post
-    server.put('/api/posts/:id', async (req, res, next) => {
+    server.put('/api/posts/:id',
+    rjwt({ secret: config.JWT_SECRET }),
+    async (req, res, next) => {
         if (!req.is('application/json')) {
             return next(new errors.InvalidContentError("Expects 'application/json"));
         }
@@ -61,7 +65,9 @@ module.exports = server => {
     });
 
     // Delete Post 
-    server.del('/api/posts/:id', async (req, res, next) => {
+    server.del('/api/posts/:id',
+    rjwt({ secret: config.JWT_SECRET }),
+    async (req, res, next) => {
         try {
             const post = await Post.findOneAndRemove({_id: req.params.id});
             res.send(204);
